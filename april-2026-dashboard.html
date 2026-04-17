@@ -6,22 +6,25 @@
   <title>Eagle Oak Landscape | April 2026 Financial Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --tk-navy: #00263A;
-      --tk-navy-mid: #003A56;
-      --tk-navy-soft: #0A4A6A;
-      --tk-green: #00C85A;
-      --tk-green-soft: #5DD870;
+      --tk-navy-mid: #064E3B;
+      --tk-navy-soft: #0B1F1A;
+      --tk-green: #16C784;
+      --tk-green-soft: #059669;
+      --tk-green-deep: #047857;
+      --tk-cream: #F7FAF8;
+      --tk-panel: #FCFEFD;
       --tk-text: #0D1F2D;
-      --tk-text-soft: #36576A;
-      --tk-text-muted: #7A909F;
-      --tk-border: rgba(0, 38, 58, 0.10);
-      --tk-success: #00C85A;
+      --tk-text-soft: #32534B;
+      --tk-text-muted: #6C847B;
+      --tk-border: rgba(6, 78, 59, 0.12);
+      --tk-success: #16C784;
       --tk-warning: #E8920A;
       --tk-danger: #E03A52;
-      --shadow: 0 12px 28px rgba(7, 47, 69, 0.08);
+      --shadow: 0 10px 24px rgba(6, 78, 59, 0.08);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -33,9 +36,8 @@
       font-family: "Plus Jakarta Sans", sans-serif;
       color: var(--tk-text);
       background:
-        radial-gradient(circle at top right, rgba(0, 200, 90, 0.14), transparent 26%),
-        radial-gradient(circle at left center, rgba(0, 38, 58, 0.08), transparent 32%),
-        linear-gradient(180deg, #f7fbfd 0%, #eef4f7 100%);
+        radial-gradient(circle at top right, rgba(22, 199, 132, 0.10), transparent 24%),
+        linear-gradient(180deg, #fbfdfc 0%, #f1f7f4 100%);
       min-height: 100vh;
     }
     body::before {
@@ -44,10 +46,10 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.48) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.42) 1px, transparent 1px);
+        linear-gradient(rgba(4, 120, 87, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(4, 120, 87, 0.04) 1px, transparent 1px);
       background-size: 44px 44px;
-      opacity: 0.28;
+      opacity: 0.5;
     }
     .shell {
       position: relative;
@@ -58,11 +60,14 @@
     .hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(0, 38, 58, 0.98), rgba(10, 74, 106, 0.96));
-      color: white;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.98), rgba(247,250,248,0.96)),
+        linear-gradient(90deg, rgba(22,199,132,0.08), rgba(255,255,255,0));
+      color: var(--tk-text);
       border-radius: 20px;
       padding: 34px 34px 36px;
       box-shadow: var(--shadow);
+      border: 1px solid var(--tk-border);
     }
     .hero::after {
       content: "";
@@ -72,7 +77,7 @@
       right: -120px;
       top: -160px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(93, 216, 112, 0.28), transparent 68%);
+      background: radial-gradient(circle, rgba(22, 199, 132, 0.18), transparent 68%);
     }
     .hero-top, .hero-grid, .section-header, .footer {
       display: flex;
@@ -87,12 +92,17 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
-    .eyebrow { color: rgba(255, 255, 255, 0.72); }
+    .eyebrow {
+      color: var(--tk-green-deep);
+      font-family: "Exo 2", sans-serif;
+    }
     .brand {
       font-size: 13px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-weight: 700;
+      color: var(--tk-navy-soft);
+      font-family: "Exo 2", sans-serif;
     }
     .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .hero-link, .ghost-link {
@@ -104,49 +114,53 @@
       text-decoration: none;
     }
     .hero-link {
-      background: rgba(255, 255, 255, 0.10);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: rgba(255, 255, 255, 0.86);
+      background: white;
+      border: 1px solid var(--tk-border);
+      color: var(--tk-navy-soft);
     }
     .ghost-link {
-      background: rgba(0, 200, 90, 0.16);
-      color: #d6ffe8;
-      border: 1px solid rgba(0, 200, 90, 0.26);
+      background: var(--tk-green);
+      color: white;
+      border: 1px solid var(--tk-green);
     }
     h1 {
       margin: 0 0 12px;
       font-size: clamp(40px, 5vw, 58px);
       line-height: 0.98;
       letter-spacing: -0.04em;
+      font-family: "Exo 2", sans-serif;
     }
-    h1 span { color: var(--tk-green-soft); }
+    h1 span { color: var(--tk-green-deep); }
     .hero-copy p, .section-note, .insight p, .note, .detail-text {
       line-height: 1.7;
       font-size: 17px;
     }
-    .hero-copy p { margin: 0; color: rgba(255, 255, 255, 0.82); }
+    .hero-copy p { margin: 0; color: var(--tk-text-soft); }
     .hero-summary {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, #ffffff, #f8fcfa);
+      border: 1px solid rgba(22, 199, 132, 0.22);
       border-radius: 16px;
       padding: 22px;
       max-width: 372px;
     }
-    .hero-summary .meta-label { color: rgba(255, 255, 255, 0.64); margin-bottom: 10px; }
+    .hero-summary .meta-label { color: var(--tk-green-deep); margin-bottom: 10px; }
     .summary-value {
       font-size: 40px;
       line-height: 1;
       font-weight: 800;
-      color: #dfffe8;
+      color: var(--tk-green-deep);
       margin-bottom: 8px;
       letter-spacing: -0.04em;
+      font-family: "Exo 2", sans-serif;
     }
-    .hero-summary p { margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.82); }
+    .hero-summary p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--tk-text-soft); }
     .section {
       margin-top: 24px;
-      background: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.72);
       border-radius: 18px;
       padding: 18px 0 0;
+      border: 1px solid var(--tk-border);
+      box-shadow: var(--shadow);
     }
     .section-header {
       padding: 0 8px 14px;
@@ -154,8 +168,16 @@
       border-bottom: 1px solid rgba(0, 38, 58, 0.08);
       align-items: flex-start;
     }
-    .section-kicker { color: var(--tk-text-muted); }
-    .section-title { margin: 6px 0 0; font-size: 34px; letter-spacing: -0.03em; }
+    .section-kicker {
+      color: var(--tk-green-deep);
+      font-family: "Exo 2", sans-serif;
+    }
+    .section-title {
+      margin: 6px 0 0;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      font-family: "Exo 2", sans-serif;
+    }
     .section-note { margin: 8px 0 0; max-width: 880px; color: var(--tk-text-soft); }
     .grid-four, .grid-three, .grid-two, .grid-seven {
       display: grid;
@@ -167,7 +189,7 @@
     .grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-seven { grid-template-columns: 1.1fr 1fr; }
     .card {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--tk-panel);
       border: 1px solid rgba(0, 38, 58, 0.08);
       border-radius: 16px;
       box-shadow: var(--shadow);
@@ -187,16 +209,17 @@
       inset: 0 auto auto 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(90deg, var(--tk-green), var(--tk-green-soft));
+      background: linear-gradient(90deg, var(--tk-green), var(--tk-green-deep));
     }
     .metric-card.negative::before { background: linear-gradient(90deg, var(--tk-danger), #ff9aa9); }
     .metric-card.warning::before { background: linear-gradient(90deg, var(--tk-warning), #f7c56a); }
-    .metric-card.soft::before { background: linear-gradient(90deg, var(--tk-navy-soft), var(--tk-green)); }
+    .metric-card.soft::before { background: linear-gradient(90deg, var(--tk-green-deep), var(--tk-green)); }
     .metric-value {
       font-size: clamp(34px, 3.2vw, 46px);
       letter-spacing: -0.04em;
       line-height: 1;
       font-weight: 800;
+      font-family: "Exo 2", sans-serif;
     }
     .metric-trend, .detail-text { color: var(--tk-text-soft); }
     .metric-subvalue { margin-top: auto; font-size: 14px; color: var(--tk-text-muted); }
@@ -250,7 +273,7 @@
     .bar-fill {
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--tk-navy-soft), var(--tk-green));
+      background: linear-gradient(90deg, var(--tk-green-deep), var(--tk-green));
     }
     .bar-fill.warn { background: linear-gradient(90deg, #d47f00, #f4be57); }
     .split {
@@ -297,19 +320,20 @@
       border: 1px solid rgba(0, 38, 58, 0.08);
       border-radius: 14px;
       padding: 16px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.92);
     }
     .detail-item strong {
       display: block;
       margin-top: 5px;
       font-size: 28px;
       letter-spacing: -0.03em;
+      font-family: "Exo 2", sans-serif;
     }
     .insight {
       padding: 18px 18px 18px 20px;
       border-radius: 16px;
       border: 1px solid rgba(0, 38, 58, 0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,250,248,0.92));
       position: relative;
     }
     .insight::before {
@@ -369,7 +393,7 @@
           <div class="brand">Eagle Oak Landscape, L.L.C.</div>
         </div>
         <div class="hero-links">
-          <a class="hero-link" href="./index.html">Back to portal</a>
+          <a class="hero-link" href="./index.html">Dashboard home</a>
           <a class="ghost-link" href="#commentary" aria-label="Jump to commentary section">Jump to commentary</a>
         </div>
       </div>
@@ -464,12 +488,12 @@
           <svg viewBox="0 0 520 280" role="img" aria-label="Revenue trend from January to April 2026">
             <defs>
               <linearGradient id="revBar" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#00C85A" />
-                <stop offset="100%" stop-color="#0A4A6A" />
+                <stop offset="0%" stop-color="#16C784" />
+                <stop offset="100%" stop-color="#047857" />
               </linearGradient>
             </defs>
             <line x1="54" y1="232" x2="484" y2="232" stroke="#c8d5df" stroke-width="2" />
-            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#6C847B" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
               <text x="72" y="252">Jan</text>
               <text x="182" y="252">Feb</text>
               <text x="292" y="252">Mar</text>
@@ -481,13 +505,13 @@
               <rect x="282" y="88" width="58" height="144" rx="10"></rect>
               <rect x="392" y="46" width="58" height="186" rx="10"></rect>
             </g>
-            <g fill="#00263A" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#0B1F1A" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
               <text x="68" y="126">$50k</text>
               <text x="178" y="98">$64k</text>
               <text x="288" y="80">$77k</text>
               <text x="398" y="38">$96k</text>
             </g>
-            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#6C847B" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
               <text x="18" y="232">$0</text>
               <text x="10" y="178">$30k</text>
               <text x="10" y="124">$60k</text>
@@ -570,7 +594,7 @@
           <div class="meta-label">Utilization by crew</div>
           <svg viewBox="0 0 540 280" role="img" aria-label="Crew utilization by team with data labels">
             <line x1="134" y1="44" x2="134" y2="230" stroke="#cfdbe3" stroke-width="2"></line>
-            <g fill="#36576A" font-size="13" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#32534B" font-size="13" font-family="Plus Jakarta Sans, sans-serif">
               <text x="20" y="72">Crew A</text>
               <text x="20" y="114">Crew B</text>
               <text x="20" y="156">Crew C</text>
@@ -578,15 +602,15 @@
             </g>
             <g>
               <rect x="144" y="54" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
-              <rect x="144" y="54" width="294" height="18" rx="9" fill="#00C85A"></rect>
+              <rect x="144" y="54" width="294" height="18" rx="9" fill="#16C784"></rect>
               <rect x="144" y="96" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
-              <rect x="144" y="96" width="269" height="18" rx="9" fill="#0A4A6A"></rect>
+              <rect x="144" y="96" width="269" height="18" rx="9" fill="#047857"></rect>
               <rect x="144" y="138" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
-              <rect x="144" y="138" width="246" height="18" rx="9" fill="#0A4A6A"></rect>
+              <rect x="144" y="138" width="246" height="18" rx="9" fill="#047857"></rect>
               <rect x="144" y="180" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
               <rect x="144" y="180" width="224" height="18" rx="9" fill="#E8920A"></rect>
             </g>
-            <g fill="#00263A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#0B1F1A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
               <text x="448" y="68">92%</text>
               <text x="422" y="110">84%</text>
               <text x="399" y="152">77%</text>
@@ -667,32 +691,32 @@
           <div class="meta-label">Sales and operating profit trend</div>
           <svg viewBox="0 0 520 300" role="img" aria-label="Quarterly trend for revenue and operating profit margin">
             <line x1="52" y1="244" x2="486" y2="244" stroke="#c8d5df" stroke-width="2"></line>
-            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#6C847B" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
               <text x="64" y="266">Feb</text>
               <text x="196" y="266">Mar</text>
               <text x="328" y="266">Apr</text>
               <text x="444" y="266">YTD avg</text>
             </g>
-            <g fill="#0A4A6A">
+            <g fill="#047857">
               <rect x="54" y="128" width="56" height="116" rx="10"></rect>
               <rect x="186" y="96" width="56" height="148" rx="10"></rect>
               <rect x="318" y="58" width="56" height="186" rx="10"></rect>
               <rect x="450" y="112" width="24" height="132" rx="10"></rect>
             </g>
-            <g fill="#00263A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#0B1F1A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
               <text x="60" y="120">$60k</text>
               <text x="192" y="88">$77k</text>
               <text x="324" y="50">$96k</text>
               <text x="434" y="104">$69k</text>
             </g>
-            <polyline fill="none" stroke="#00C85A" stroke-width="4" points="82,210 214,196 346,158 462,186"></polyline>
-            <g fill="#00C85A">
+            <polyline fill="none" stroke="#16C784" stroke-width="4" points="82,210 214,196 346,158 462,186"></polyline>
+            <g fill="#16C784">
               <circle cx="82" cy="210" r="5"></circle>
               <circle cx="214" cy="196" r="5"></circle>
               <circle cx="346" cy="158" r="5"></circle>
               <circle cx="462" cy="186" r="5"></circle>
             </g>
-            <g fill="#00A24A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+            <g fill="#047857" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
               <text x="68" y="202">4%</text>
               <text x="199" y="188">6%</text>
               <text x="332" y="150">10%</text>
