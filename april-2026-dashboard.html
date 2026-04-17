@@ -6,7 +6,7 @@
   <title>Eagle Oak Landscape | April 2026 Financial Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --tk-navy: #00263A;
@@ -30,6 +30,10 @@
     html { scroll-behavior: smooth; }
     #commentary {
       scroll-margin-top: 24px;
+    }
+    @keyframes shimmerText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
     }
     body {
       margin: 0;
@@ -94,7 +98,6 @@
     }
     .eyebrow {
       color: var(--tk-green-deep);
-      font-family: "Exo 2", sans-serif;
     }
     .brand {
       font-size: 13px;
@@ -102,7 +105,6 @@
       text-transform: uppercase;
       font-weight: 700;
       color: var(--tk-navy-soft);
-      font-family: "Exo 2", sans-serif;
     }
     .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .hero-link, .ghost-link {
@@ -128,9 +130,16 @@
       font-size: clamp(40px, 5vw, 58px);
       line-height: 0.98;
       letter-spacing: -0.04em;
-      font-family: "Exo 2", sans-serif;
     }
     h1 span { color: var(--tk-green-deep); }
+    .shimmer-text {
+      background: linear-gradient(90deg, var(--tk-green-deep) 0%, var(--tk-green) 35%, var(--tk-navy-soft) 50%, var(--tk-green) 65%, var(--tk-green-deep) 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 6s linear infinite;
+    }
     .hero-copy p, .section-note, .insight p, .note, .detail-text {
       line-height: 1.7;
       font-size: 17px;
@@ -151,7 +160,6 @@
       color: var(--tk-green-deep);
       margin-bottom: 8px;
       letter-spacing: -0.04em;
-      font-family: "Exo 2", sans-serif;
     }
     .hero-summary p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--tk-text-soft); }
     .section {
@@ -170,13 +178,11 @@
     }
     .section-kicker {
       color: var(--tk-green-deep);
-      font-family: "Exo 2", sans-serif;
     }
     .section-title {
       margin: 6px 0 0;
       font-size: 34px;
       letter-spacing: -0.03em;
-      font-family: "Exo 2", sans-serif;
     }
     .section-note { margin: 8px 0 0; max-width: 880px; color: var(--tk-text-soft); }
     .grid-four, .grid-three, .grid-two, .grid-seven {
@@ -219,7 +225,6 @@
       letter-spacing: -0.04em;
       line-height: 1;
       font-weight: 800;
-      font-family: "Exo 2", sans-serif;
     }
     .metric-trend, .detail-text { color: var(--tk-text-soft); }
     .metric-subvalue { margin-top: auto; font-size: 14px; color: var(--tk-text-muted); }
@@ -327,7 +332,6 @@
       margin-top: 5px;
       font-size: 28px;
       letter-spacing: -0.03em;
-      font-family: "Exo 2", sans-serif;
     }
     .insight {
       padding: 18px 18px 18px 20px;
@@ -399,7 +403,7 @@
       </div>
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1><span>April 2026</span> dashboard for Eagle Oak Landscape</h1>
+          <h1><span class="shimmer-text">April 2026</span> dashboard for Eagle Oak Landscape</h1>
           <p>April is modeled as a good spring month. Sales improved to $96.4k, gross margin recovered to 48.8%, and operating profit was positive. The two areas to keep watching are crew productivity and how quickly invoices turn into cash.</p>
         </div>
         <aside class="hero-summary">
@@ -414,7 +418,7 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Executive summary</div>
-          <h2 class="section-title">At a glance: April was better, but labor and collections still need attention</h2>
+          <h2 class="section-title"><span class="shimmer-text">At a glance:</span> April was better, but labor and collections still need attention</h2>
           <p class="section-note">This top section answers the main owner questions first: sales, gross profit, operating profit, and cash. If you only read one section, start here.</p>
         </div>
       </div>
@@ -812,7 +816,7 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Key commentary</div>
-          <h2 class="section-title">Main takeaways and next steps</h2>
+          <h2 class="section-title"><span class="shimmer-text">Main takeaways</span> and next steps</h2>
           <p class="section-note">The business looks healthier in April, but the next round of improvement depends on clear pricing, tighter routes, and faster collections.</p>
         </div>
       </div>
