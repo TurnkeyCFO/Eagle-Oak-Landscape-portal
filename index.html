@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Oak Landscape Client Portal | TurnkeyCFO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --tk-navy: #00263A;
+      --tk-navy-mid: #003A56;
+      --tk-green: #00C85A;
+      --tk-green-soft: #5DD870;
+      --tk-bg-light: #F2F5F8;
+      --tk-text: #0D1F2D;
+      --tk-text-soft: #36576A;
+      --tk-text-muted: #7A909F;
+      --tk-border: rgba(0, 38, 58, 0.10);
+      --shadow: 0 18px 40px rgba(7, 47, 69, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--tk-text);
+      background:
+        radial-gradient(circle at top right, rgba(0, 200, 90, 0.12), transparent 26%),
+        linear-gradient(180deg, #f8fbfd 0%, #eef4f7 100%);
+    }
+    .shell { width: min(1080px, calc(100% - 28px)); margin: 20px auto 48px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 38, 58, 0.98), rgba(10, 74, 106, 0.94));
+      color: white;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      right: -110px;
+      top: -130px;
+      background: radial-gradient(circle, rgba(93, 216, 112, 0.25), transparent 68%);
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    h1 {
+      margin: 12px 0;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      max-width: 700px;
+    }
+    h1 span { color: var(--tk-green-soft); }
+    .hero p {
+      margin: 0;
+      max-width: 720px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      align-items: end;
+    }
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      padding: 18px;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 8px;
+    }
+    .hero-stat-value {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+    }
+    .links {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .link {
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .link-primary { background: var(--tk-green); color: var(--tk-navy); }
+    .link-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .section {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid var(--tk-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .section h2 { margin: 0 0 12px; font-size: 28px; letter-spacing: -0.03em; }
+    .section p { margin: 0; color: var(--tk-text-soft); line-height: 1.7; font-size: 14px; }
+    .portal-card {
+      margin-top: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--tk-border);
+      border-radius: 22px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .portal-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--tk-text-muted);
+    }
+    .portal-title {
+      margin: 8px 0 10px;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .portal-title a { color: var(--tk-text); text-decoration: none; }
+    .portal-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .portal-metric {
+      border: 1px solid var(--tk-border);
+      border-radius: 16px;
+      padding: 14px;
+      background: #f9fcfe;
+    }
+    .portal-metric strong {
+      display: block;
+      font-size: 24px;
+      margin-top: 4px;
+      letter-spacing: -0.03em;
+    }
+    .mini-chart { display: grid; gap: 12px; }
+    .bar-row { display: grid; gap: 6px; }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--tk-text-soft);
+    }
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #dfe8ee;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--tk-navy-mid), var(--tk-green));
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100%, calc(100% - 20px)); }
+      .hero-grid, .portal-card, .portal-meta { grid-template-columns: 1fr; }
+      .hero { padding: 22px 18px; }
+      h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">TurnkeyCFO client portal</div>
+          <h1><span>Eagle Oak Landscape</span> financial dashboard mock</h1>
+          <p>This mock portal translates the Eagle Oak business profile into a monthly owner dashboard: executive summary first, true financial detail underneath, and operator-focused commentary at the end. All figures are modeled for presentation purposes and tuned to a commercial landscaping business in DFW.</p>
+          <div class="links">
+            <a class="link link-primary" href="./april-2026-dashboard.html">Open April 2026 dashboard</a>
+            <a class="link link-secondary" href="https://turnkeycfo.com/" target="_blank" rel="noreferrer">TurnkeyCFO</a>
+          </div>
+        </div>
+        <aside class="hero-stat">
+          <div class="hero-stat-label">Modeled annual revenue</div>
+          <div class="hero-stat-value">$840k</div>
+          <p>Recurring maintenance is treated as the stabilizer, with seasonal installs and irrigation work driving spring and summer upside.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Portal Snapshot</h2>
+      <p>The page below is designed to feel like a real monthly CFO review for Earl Shanks: a clean summary up top, visualized operating levers in the middle, and actionable commentary after the financial detail.</p>
+
+      <article class="portal-card">
+        <div>
+          <div class="portal-label">Latest dashboard</div>
+          <div class="portal-title"><a href="./april-2026-dashboard.html">April 2026 Financial Dashboard</a></div>
+          <p>April is modeled as a healthy spring month with stronger recurring revenue, better crew absorption, and tighter cash conversion than the winter baseline.</p>
+          <div class="portal-meta">
+            <div class="portal-metric">Revenue<strong>$96.4k</strong></div>
+            <div class="portal-metric">EBITDA<strong>$9.3k</strong></div>
+            <div class="portal-metric">Ending Cash<strong>$62.1k</strong></div>
+          </div>
+        </div>
+        <div class="mini-chart" aria-label="Revenue mix summary">
+          <div class="bar-row">
+            <div class="bar-label"><span>Recurring maintenance</span><strong>60%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width: 60%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Install / enhancement</span><strong>28%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Irrigation / specialty</span><strong>12%</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width: 12%"></div></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Oak Landscape | April 2026 Financial Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --tk-navy: #00263A;
+      --tk-navy-mid: #003A56;
+      --tk-navy-soft: #0A4A6A;
+      --tk-green: #00C85A;
+      --tk-green-soft: #5DD870;
+      --tk-text: #0D1F2D;
+      --tk-text-soft: #36576A;
+      --tk-text-muted: #7A909F;
+      --tk-border: rgba(0, 38, 58, 0.10);
+      --tk-success: #00C85A;
+      --tk-warning: #E8920A;
+      --tk-danger: #E03A52;
+      --shadow: 0 18px 40px rgba(7, 47, 69, 0.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--tk-text);
+      background:
+        radial-gradient(circle at top right, rgba(0, 200, 90, 0.14), transparent 26%),
+        radial-gradient(circle at left center, rgba(0, 38, 58, 0.08), transparent 32%),
+        linear-gradient(180deg, #f7fbfd 0%, #eef4f7 100%);
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.48) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.42) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.28;
+    }
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(1280px, calc(100% - 28px));
+      margin: 20px auto 52px;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 38, 58, 0.98), rgba(10, 74, 106, 0.96));
+      color: white;
+      border-radius: 30px;
+      padding: 28px 28px 32px;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(93, 216, 112, 0.28), transparent 68%);
+    }
+    .hero-top, .hero-grid, .section-header, .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .hero-grid { align-items: end; margin-top: 22px; }
+    .hero-grid > * { flex: 1; }
+    .eyebrow, .meta-label, .section-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .eyebrow { color: rgba(255, 255, 255, 0.72); }
+    .brand {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hero-link, .ghost-link {
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .hero-link {
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.86);
+    }
+    .ghost-link {
+      background: rgba(0, 200, 90, 0.16);
+      color: #d6ffe8;
+      border: 1px solid rgba(0, 200, 90, 0.26);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+    h1 span { color: var(--tk-green-soft); }
+    .hero-copy p, .section-note, .insight p, .note, .detail-text {
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .hero-copy p { margin: 0; color: rgba(255, 255, 255, 0.82); }
+    .hero-summary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      padding: 18px;
+      max-width: 372px;
+    }
+    .hero-summary .meta-label { color: rgba(255, 255, 255, 0.64); margin-bottom: 10px; }
+    .summary-value {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      color: #dfffe8;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+    .hero-summary p { margin: 0; font-size: 13px; line-height: 1.6; color: rgba(255, 255, 255, 0.76); }
+    .section {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.42);
+      border-radius: 28px;
+      padding: 18px 0 0;
+    }
+    .section-header {
+      padding: 0 8px 14px;
+      margin: 0 18px 16px;
+      border-bottom: 1px solid rgba(0, 38, 58, 0.08);
+      align-items: flex-start;
+    }
+    .section-kicker { color: var(--tk-text-muted); }
+    .section-title { margin: 6px 0 0; font-size: 28px; letter-spacing: -0.03em; }
+    .section-note { margin: 8px 0 0; max-width: 780px; color: var(--tk-text-soft); }
+    .grid-four, .grid-three, .grid-two, .grid-seven {
+      display: grid;
+      gap: 18px;
+      padding: 0 18px 18px;
+    }
+    .grid-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-seven { grid-template-columns: 1.1fr 1fr; }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 38, 58, 0.08);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .metric-card {
+      min-height: 176px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--tk-green), var(--tk-green-soft));
+    }
+    .metric-card.negative::before { background: linear-gradient(90deg, var(--tk-danger), #ff9aa9); }
+    .metric-card.warning::before { background: linear-gradient(90deg, var(--tk-warning), #f7c56a); }
+    .metric-card.soft::before { background: linear-gradient(90deg, var(--tk-navy-soft), var(--tk-green)); }
+    .metric-value {
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .metric-trend, .detail-text { color: var(--tk-text-soft); }
+    .metric-subvalue { margin-top: auto; font-size: 12px; color: var(--tk-text-muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(0, 38, 58, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tk-text-muted);
+    }
+    tr:last-child td { border-bottom: 0; }
+    .text-right { text-align: right; }
+    .neg { color: var(--tk-danger); font-weight: 700; }
+    .pos { color: var(--tk-success); font-weight: 700; }
+    .warn { color: var(--tk-warning); font-weight: 700; }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--tk-text-soft);
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .bars, .stack, .insight-list { display: grid; gap: 14px; }
+    .bar-row { display: grid; gap: 6px; }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--tk-text-soft);
+    }
+    .bar-track {
+      height: 14px;
+      border-radius: 999px;
+      background: #dfe8ee;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--tk-navy-soft), var(--tk-green));
+    }
+    .bar-fill.warn { background: linear-gradient(90deg, #d47f00, #f4be57); }
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .donut {
+      width: 190px;
+      height: 190px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--tk-green) 0 60%,
+          var(--tk-navy-soft) 60% 88%,
+          var(--tk-warning) 88% 100%
+        );
+    }
+    .donut::after {
+      content: "Revenue mix";
+      position: absolute;
+      inset: 28px;
+      border-radius: 50%;
+      background: white;
+      display: grid;
+      place-items: center;
+      color: var(--tk-text-soft);
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .viz-caption { font-size: 13px; color: var(--tk-text-soft); line-height: 1.7; }
+    .svg-card svg { width: 100%; height: auto; display: block; }
+    .detail-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .detail-item {
+      border: 1px solid rgba(0, 38, 58, 0.08);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+    .detail-item strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+    .insight {
+      padding: 18px 18px 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 38, 58, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
+      position: relative;
+    }
+    .insight::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 18px;
+      bottom: 18px;
+      width: 4px;
+      border-radius: 999px;
+      background: var(--tk-green);
+    }
+    .insight.warning::before { background: var(--tk-warning); }
+    .insight.danger::before { background: var(--tk-danger); }
+    .insight h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -0.02em; }
+    .insight p { margin: 0; color: var(--tk-text-soft); }
+    .note {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 200, 90, 0.18);
+      color: var(--tk-text-soft);
+      margin: 0 18px 18px;
+    }
+    .footer {
+      margin: 10px 18px 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 38, 58, 0.08);
+      color: var(--tk-text-muted);
+      font-size: 12px;
+      flex-wrap: wrap;
+      line-height: 1.6;
+    }
+    @media (max-width: 1120px) {
+      .grid-four { grid-template-columns: 1fr 1fr; }
+      .grid-three, .grid-seven, .split, .detail-grid { grid-template-columns: 1fr; }
+      .hero-grid { flex-direction: column; }
+      .hero-summary { max-width: none; }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100%, calc(100% - 20px)); }
+      .hero { padding: 22px 18px 24px; }
+      .hero-top, .section-header, .footer { flex-direction: column; }
+      .grid-four, .grid-three, .grid-two, .grid-seven { grid-template-columns: 1fr; padding: 0 10px 14px; }
+      .section-header { margin: 0 10px 14px; }
+      .note, .footer { margin-left: 10px; margin-right: 10px; }
+      .donut { width: 170px; height: 170px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">TurnkeyCFO client dashboard</div>
+          <div class="brand">Eagle Oak Landscape, L.L.C.</div>
+        </div>
+        <div class="hero-links">
+          <a class="hero-link" href="./index.html">Back to portal</a>
+          <a class="ghost-link" href="#commentary">Jump to commentary</a>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1><span>April 2026</span> dashboard for Eagle Oak Landscape</h1>
+          <p>April is modeled as the first month where Eagle Oak's recurring maintenance base and spring project activity work together. Revenue rose to $96.4k, gross margin recovered to 48.8%, and EBITDA finished positive, but labor efficiency and collections still determine whether that improvement can hold through the summer push.</p>
+        </div>
+        <aside class="hero-summary">
+          <div class="meta-label">April EBITDA</div>
+          <div class="summary-value">$9.3k</div>
+          <p>Positive operating leverage returned as recurring maintenance covered base crew capacity while project work layered on higher contribution dollars.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Executive summary</div>
+          <h2 class="section-title">A healthier spring month, with labor and A/R still under the microscope</h2>
+          <p class="section-note">These headline cards answer the owner's first questions: Is revenue growing, are crews productive, is cash safe, and is the recurring base doing its job?</p>
+        </div>
+      </div>
+      <div class="grid-four">
+        <article class="card metric-card">
+          <div class="meta-label">April revenue</div>
+          <div class="metric-value">$96.4k</div>
+          <div class="metric-trend">Up 25% from March and 14.7% above modeled monthly run-rate, led by strong maintenance routing and spring enhancements.</div>
+          <div class="metric-subvalue">YTD revenue: $297.4k</div>
+        </article>
+        <article class="card metric-card soft">
+          <div class="meta-label">Gross profit</div>
+          <div class="metric-value">$47.0k</div>
+          <div class="metric-trend">Gross margin landed at 48.8%, back inside the expected range for a well-managed commercial landscaping month.</div>
+          <div class="metric-subvalue">Direct labor + materials: $49.4k</div>
+        </article>
+        <article class="card metric-card">
+          <div class="meta-label">EBITDA</div>
+          <div class="metric-value">$9.3k</div>
+          <div class="metric-trend">EBITDA margin of 9.7% shows the business can produce profit when route density and field productivity tighten together.</div>
+          <div class="metric-subvalue">Net income modeled at $7.1k</div>
+        </article>
+        <article class="card metric-card warning">
+          <div class="meta-label">Ending cash</div>
+          <div class="metric-value">$62.1k</div>
+          <div class="metric-trend">Cash improved, but only after collections accelerated in the back half of the month and owner draws were kept light.</div>
+          <div class="metric-subvalue">Payroll coverage ratio: 1.8x</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Revenue engine</div>
+          <h2 class="section-title">Recurring revenue is carrying the base; installs provide the margin lift</h2>
+          <p class="section-note">The modeled mix below reflects a commercial landscaping business where monthly maintenance contracts protect crew utilization while install, irrigation, and seasonal enhancement work lift average ticket size.</p>
+        </div>
+      </div>
+      <div class="grid-seven">
+        <article class="card split">
+          <div>
+            <div class="meta-label">April revenue mix</div>
+            <div class="donut" aria-hidden="true"></div>
+          </div>
+          <div class="stack">
+            <div class="legend">
+              <span><i style="background: var(--tk-green)"></i>Recurring maintenance: $57.8k</span>
+              <span><i style="background: var(--tk-navy-soft)"></i>Install / enhancement: $27.0k</span>
+              <span><i style="background: var(--tk-warning)"></i>Irrigation / specialty: $11.6k</span>
+            </div>
+            <div class="bars">
+              <div class="bar-row">
+                <div class="bar-label"><span>Recurring maintenance</span><strong>60%</strong></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 60%"></div></div>
+              </div>
+              <div class="bar-row">
+                <div class="bar-label"><span>Install / enhancement</span><strong>28%</strong></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div>
+              </div>
+              <div class="bar-row">
+                <div class="bar-label"><span>Irrigation / specialty</span><strong>12%</strong></div>
+                <div class="bar-track"><div class="bar-fill warn" style="width: 12%"></div></div>
+              </div>
+            </div>
+            <p class="viz-caption">This mix is healthy for Eagle Oak: recurring contracts keep payroll covered, while enhancement work adds enough higher-margin upside to prevent the month from becoming a pure route-density play.</p>
+          </div>
+        </article>
+        <article class="card svg-card">
+          <div class="meta-label">Revenue by month with data labels</div>
+          <svg viewBox="0 0 520 280" role="img" aria-label="Revenue trend from January to April 2026">
+            <defs>
+              <linearGradient id="revBar" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#00C85A" />
+                <stop offset="100%" stop-color="#0A4A6A" />
+              </linearGradient>
+            </defs>
+            <line x1="54" y1="232" x2="484" y2="232" stroke="#c8d5df" stroke-width="2" />
+            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="72" y="252">Jan</text>
+              <text x="182" y="252">Feb</text>
+              <text x="292" y="252">Mar</text>
+              <text x="402" y="252">Apr</text>
+            </g>
+            <g fill="url(#revBar)">
+              <rect x="62" y="134" width="58" height="98" rx="10"></rect>
+              <rect x="172" y="106" width="58" height="126" rx="10"></rect>
+              <rect x="282" y="88" width="58" height="144" rx="10"></rect>
+              <rect x="392" y="46" width="58" height="186" rx="10"></rect>
+            </g>
+            <g fill="#00263A" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="68" y="126">$50k</text>
+              <text x="178" y="98">$64k</text>
+              <text x="288" y="80">$77k</text>
+              <text x="398" y="38">$96k</text>
+            </g>
+            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="18" y="232">$0</text>
+              <text x="10" y="178">$30k</text>
+              <text x="10" y="124">$60k</text>
+              <text x="10" y="70">$90k</text>
+            </g>
+          </svg>
+          <p class="viz-caption">The modeled first four months show spring ramp-up. April clears the low revenue-per-employee concern only if the business can keep this pace without adding idle labor.</p>
+        </article>
+      </div>
+      <div class="grid-two">
+        <article class="card">
+          <div class="meta-label">Revenue detail</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th class="text-right">April</th>
+                <th class="text-right">% of revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Recurring maintenance</td><td class="text-right">$57.8k</td><td class="text-right">60.0%</td></tr>
+              <tr><td>Install / enhancement</td><td class="text-right">$27.0k</td><td class="text-right">28.0%</td></tr>
+              <tr><td>Irrigation / specialty</td><td class="text-right">$11.6k</td><td class="text-right">12.0%</td></tr>
+              <tr><td><strong>Total revenue</strong></td><td class="text-right"><strong>$96.4k</strong></td><td class="text-right"><strong>100.0%</strong></td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card">
+          <div class="meta-label">Growth levers</div>
+          <table>
+            <thead>
+              <tr>
+                <th>KPI</th>
+                <th class="text-right">April</th>
+                <th>Read</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>New contracts signed</td><td class="text-right">3</td><td>Two multifamily, one light industrial</td></tr>
+              <tr><td>Upsell revenue</td><td class="text-right">$8.9k</td><td>Seasonal cleanup and irrigation repair packages</td></tr>
+              <tr><td>Customer churn</td><td class="text-right">1.8%</td><td class="pos">Low enough to protect route density</td></tr>
+              <tr><td>Average monthly contract value</td><td class="text-right">$2.9k</td><td>Signals room for pricing work on smaller accounts</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Labor efficiency</div>
+          <h2 class="section-title">Field labor is still the main economic lever</h2>
+          <p class="section-note">The business model only scales if recurring routes keep crews loaded and project work is priced high enough to absorb overtime, equipment usage, and rework risk.</p>
+        </div>
+      </div>
+      <div class="grid-three">
+        <article class="card metric-card soft">
+          <div class="meta-label">Revenue per employee</div>
+          <div class="metric-value">$3.9k</div>
+          <div class="metric-trend">Annualized from April, this points to roughly $46k per employee, better than the current profile but still below stronger operators.</div>
+          <div class="metric-subvalue">Target band: $6.5k to $8.5k per employee per month</div>
+        </article>
+        <article class="card metric-card warning">
+          <div class="meta-label">Labor % of revenue</div>
+          <div class="metric-value">36.1%</div>
+          <div class="metric-trend">This is workable, but it leaves little room for route fragmentation or unbilled callback work.</div>
+          <div class="metric-subvalue">Field labor dollars: $34.8k</div>
+        </article>
+        <article class="card metric-card">
+          <div class="meta-label">Crew utilization</div>
+          <div class="metric-value">81%</div>
+          <div class="metric-trend">Better than winter, but still suggests some dead time or underpriced small stops in the schedule.</div>
+          <div class="metric-subvalue">Target: 86%+</div>
+        </article>
+      </div>
+      <div class="grid-two">
+        <article class="card svg-card">
+          <div class="meta-label">Utilization by crew</div>
+          <svg viewBox="0 0 540 280" role="img" aria-label="Crew utilization by team with data labels">
+            <line x1="134" y1="44" x2="134" y2="230" stroke="#cfdbe3" stroke-width="2"></line>
+            <g fill="#36576A" font-size="13" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="20" y="72">Crew A</text>
+              <text x="20" y="114">Crew B</text>
+              <text x="20" y="156">Crew C</text>
+              <text x="20" y="198">Crew D</text>
+            </g>
+            <g>
+              <rect x="144" y="54" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
+              <rect x="144" y="54" width="294" height="18" rx="9" fill="#00C85A"></rect>
+              <rect x="144" y="96" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
+              <rect x="144" y="96" width="269" height="18" rx="9" fill="#0A4A6A"></rect>
+              <rect x="144" y="138" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
+              <rect x="144" y="138" width="246" height="18" rx="9" fill="#0A4A6A"></rect>
+              <rect x="144" y="180" width="320" height="18" rx="9" fill="#dfe8ee"></rect>
+              <rect x="144" y="180" width="224" height="18" rx="9" fill="#E8920A"></rect>
+            </g>
+            <g fill="#00263A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="448" y="68">92%</text>
+              <text x="422" y="110">84%</text>
+              <text x="399" y="152">77%</text>
+              <text x="376" y="194">70%</text>
+            </g>
+          </svg>
+          <p class="viz-caption">The spread between the strongest and weakest crews is wide. That usually points to account mix, dispatching friction, or inconsistent stop pricing rather than simple headcount shortage.</p>
+        </article>
+        <article class="card">
+          <div class="meta-label">Unit economics</div>
+          <div class="detail-grid">
+            <div class="detail-item">
+              Revenue per labor hour
+              <strong>$82</strong>
+            </div>
+            <div class="detail-item">
+              Gross profit per crew day
+              <strong>$671</strong>
+            </div>
+            <div class="detail-item">
+              Average route density
+              <strong>7.4 stops</strong>
+            </div>
+          </div>
+          <p class="detail-text">These modeled economics are good enough to support positive EBITDA, but they are not yet strong enough to hide sloppy route planning. In a business this labor-heavy, small scheduling leaks compound quickly.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Labor profile</th>
+                <th class="text-right">April</th>
+                <th class="text-right">Benchmark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Billable labor hours</td><td class="text-right">1,172</td><td class="text-right">1,200+</td></tr>
+              <tr><td>Overtime hours</td><td class="text-right">74</td><td class="text-right">Below 60</td></tr>
+              <tr><td>Non-billable yard / travel time</td><td class="text-right">12.5%</td><td class="text-right">Below 10%</td></tr>
+              <tr><td>Callback / rework rate</td><td class="text-right">3.2%</td><td class="text-right">Below 2.5%</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">True financial detail</div>
+          <h2 class="section-title">P&amp;L, cash flow, and working capital detail</h2>
+          <p class="section-note">This section is where the summary earns credibility. The model ties revenue mix, job costs, payroll pressure, and collections into one operating view.</p>
+        </div>
+      </div>
+      <div class="grid-two">
+        <article class="card">
+          <div class="meta-label">Monthly P&amp;L bridge</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Line item</th>
+                <th class="text-right">April</th>
+                <th class="text-right">% of revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Revenue</td><td class="text-right">$96.4k</td><td class="text-right">100.0%</td></tr>
+              <tr><td>Direct labor</td><td class="text-right">$34.8k</td><td class="text-right">36.1%</td></tr>
+              <tr><td>Materials and subs</td><td class="text-right">$14.6k</td><td class="text-right">15.1%</td></tr>
+              <tr><td><strong>Gross profit</strong></td><td class="text-right pos"><strong>$47.0k</strong></td><td class="text-right pos"><strong>48.8%</strong></td></tr>
+              <tr><td>Operating expenses</td><td class="text-right">$34.1k</td><td class="text-right">35.4%</td></tr>
+              <tr><td>Owner comp / admin overhead</td><td class="text-right">$3.6k</td><td class="text-right">3.7%</td></tr>
+              <tr><td><strong>EBITDA</strong></td><td class="text-right pos"><strong>$9.3k</strong></td><td class="text-right pos"><strong>9.7%</strong></td></tr>
+              <tr><td>Interest + taxes</td><td class="text-right">$2.2k</td><td class="text-right">2.3%</td></tr>
+              <tr><td><strong>Net income</strong></td><td class="text-right pos"><strong>$7.1k</strong></td><td class="text-right pos"><strong>7.4%</strong></td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card svg-card">
+          <div class="meta-label">Quarter trend with labels</div>
+          <svg viewBox="0 0 520 300" role="img" aria-label="Quarterly trend for revenue and EBITDA margin">
+            <line x1="52" y1="244" x2="486" y2="244" stroke="#c8d5df" stroke-width="2"></line>
+            <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="64" y="266">Feb</text>
+              <text x="196" y="266">Mar</text>
+              <text x="328" y="266">Apr</text>
+              <text x="444" y="266">YTD avg</text>
+            </g>
+            <g fill="#0A4A6A">
+              <rect x="54" y="128" width="56" height="116" rx="10"></rect>
+              <rect x="186" y="96" width="56" height="148" rx="10"></rect>
+              <rect x="318" y="58" width="56" height="186" rx="10"></rect>
+              <rect x="450" y="112" width="24" height="132" rx="10"></rect>
+            </g>
+            <g fill="#00263A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="60" y="120">$60k</text>
+              <text x="192" y="88">$77k</text>
+              <text x="324" y="50">$96k</text>
+              <text x="434" y="104">$69k</text>
+            </g>
+            <polyline fill="none" stroke="#00C85A" stroke-width="4" points="82,210 214,196 346,158 462,186"></polyline>
+            <g fill="#00C85A">
+              <circle cx="82" cy="210" r="5"></circle>
+              <circle cx="214" cy="196" r="5"></circle>
+              <circle cx="346" cy="158" r="5"></circle>
+              <circle cx="462" cy="186" r="5"></circle>
+            </g>
+            <g fill="#00A24A" font-size="12" font-weight="700" font-family="Plus Jakarta Sans, sans-serif">
+              <text x="68" y="202">4%</text>
+              <text x="199" y="188">6%</text>
+              <text x="332" y="150">10%</text>
+              <text x="446" y="178">7%</text>
+            </g>
+          </svg>
+          <p class="viz-caption">Revenue is climbing, but the more important story is margin quality. April's improvement is meaningful because EBITDA moved with it instead of getting consumed by overhead or labor drift.</p>
+        </article>
+      </div>
+      <div class="grid-two">
+        <article class="card">
+          <div class="meta-label">Cash flow and runway</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th class="text-right">April</th>
+                <th>Takeaway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Operating cash flow</td><td class="text-right pos">$6.8k</td><td>Improved as April invoices converted faster than March</td></tr>
+              <tr><td>Investing cash flow</td><td class="text-right neg">($4.2k)</td><td>Routine mower and trailer maintenance</td></tr>
+              <tr><td>Financing / owner draws</td><td class="text-right neg">($2.5k)</td><td>Controlled draw activity preserved cash</td></tr>
+              <tr><td>Net cash movement</td><td class="text-right pos">$0.1k</td><td>Cash stayed basically flat while still funding growth</td></tr>
+              <tr><td>Cash runway</td><td class="text-right">6.2 weeks</td><td class="warn">Safe, but not enough to get sloppy on collections</td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card">
+          <div class="meta-label">A/R aging and concentration</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Bucket</th>
+                <th class="text-right">Amount</th>
+                <th class="text-right">% of A/R</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Current</td><td class="text-right">$36.4k</td><td class="text-right">49%</td></tr>
+              <tr><td>31-60 days</td><td class="text-right">$18.3k</td><td class="text-right">25%</td></tr>
+              <tr><td>61-90 days</td><td class="text-right">$11.0k</td><td class="text-right">15%</td></tr>
+              <tr><td>91+ days</td><td class="text-right">$8.1k</td><td class="text-right">11%</td></tr>
+              <tr><td><strong>Total A/R</strong></td><td class="text-right"><strong>$73.8k</strong></td><td class="text-right"><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="detail-text">A/R is better than the profile's higher-risk case, but the business is still financing payroll ahead of collections. The goal is not just lower aging; it is predictable cash timing before weekly payroll clears.</p>
+        </article>
+      </div>
+      <div class="grid-two">
+        <article class="card">
+          <div class="meta-label">Top customer concentration</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th class="text-right">Monthly billings</th>
+                <th class="text-right">% of revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Northgate Multifamily</td><td class="text-right">$14.6k</td><td class="text-right">15.1%</td></tr>
+              <tr><td>Vista Ridge Property Group</td><td class="text-right">$11.8k</td><td class="text-right">12.2%</td></tr>
+              <tr><td>Coppell Commerce Center</td><td class="text-right">$8.2k</td><td class="text-right">8.5%</td></tr>
+              <tr><td><strong>Top 3 total</strong></td><td class="text-right"><strong>$34.6k</strong></td><td class="text-right"><strong>35.8%</strong></td></tr>
+            </tbody>
+          </table>
+        </article>
+        <article class="card">
+          <div class="meta-label">Balance sheet watch list</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th class="text-right">April</th>
+                <th>Read</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Cash</td><td class="text-right">$62.1k</td><td>Operationally adequate</td></tr>
+              <tr><td>Accounts receivable</td><td class="text-right">$73.8k</td><td>Needs active follow-up cadence</td></tr>
+              <tr><td>Equipment loans</td><td class="text-right">$48.5k</td><td>Reasonable for fleet size</td></tr>
+              <tr><td>Accounts payable</td><td class="text-right">$19.7k</td><td>Within normal vendor float</td></tr>
+              <tr><td>Owner equity / retained earnings</td><td class="text-right">$104.0k</td><td>Protected if summer margin holds</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="commentary">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">CFO commentary</div>
+          <h2 class="section-title">What matters most coming out of April</h2>
+          <p class="section-note">The operating story is better than the company profile alone would suggest, but the next layer of improvement depends on pricing discipline, route design, and faster billing-to-cash conversion.</p>
+        </div>
+      </div>
+      <div class="grid-two">
+        <div class="insight-list">
+          <article class="insight">
+            <h3>1. Recurring maintenance is doing exactly what it should</h3>
+            <p>At 60% of revenue, recurring work is stabilizing labor absorption and giving the business a base from which to add higher-margin projects. That reduces volatility and makes growth more controllable than a project-only model.</p>
+          </article>
+          <article class="insight warning">
+            <h3>2. Productivity improved, but Eagle Oak is not yet at best-in-class crew economics</h3>
+            <p>April's utilization and labor percentage are respectable, yet revenue per employee still trails stronger operators. The next win is route density and minimum pricing discipline on small accounts, not broad cost-cutting.</p>
+          </article>
+        </div>
+        <div class="insight-list">
+          <article class="insight danger">
+            <h3>3. Payroll remains the real cash stress test</h3>
+            <p>Even in a good month, weekly payroll hits before all invoices are collected. A tighter A/R cadence, cleaner deposits on install work, and faster completion billing will do more for financial resilience than trimming office overhead.</p>
+          </article>
+          <article class="insight">
+            <h3>4. Pricing power is likely hiding inside account mix</h3>
+            <p>The profile suggests too many small or underpriced contracts. If management prunes low-density stops and pushes enhancement upsells through the best property managers, EBITDA can expand without adding much headcount.</p>
+          </article>
+        </div>
+      </div>
+      <div class="note">Modeled recommendations for May: raise minimum stop pricing on low-density routes, move irrigation repairs to same-week billing, review the bottom 10 accounts by gross profit per visit, and tie crew scorecards to billable hours, callbacks, and route completion time.</div>
+      <div class="footer">
+        <div>Prepared as a mock TurnkeyCFO owner dashboard using the Eagle Oak Landscape profile, industry assumptions, and illustrative April 2026 financial modeling.</div>
+        <div>Confidential demo reporting for presentation purposes.</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
