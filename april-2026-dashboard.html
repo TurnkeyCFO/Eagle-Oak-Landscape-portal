@@ -21,7 +21,7 @@
       --tk-success: #00C85A;
       --tk-warning: #E8920A;
       --tk-danger: #E03A52;
-      --shadow: 0 18px 40px rgba(7, 47, 69, 0.10);
+      --shadow: 0 12px 28px rgba(7, 47, 69, 0.08);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -49,7 +49,7 @@
     .shell {
       position: relative;
       z-index: 1;
-      width: min(1280px, calc(100% - 28px));
+      width: min(1320px, calc(100% - 36px));
       margin: 20px auto 52px;
     }
     .hero {
@@ -57,8 +57,8 @@
       overflow: hidden;
       background: linear-gradient(135deg, rgba(0, 38, 58, 0.98), rgba(10, 74, 106, 0.96));
       color: white;
-      border-radius: 30px;
-      padding: 28px 28px 32px;
+      border-radius: 20px;
+      padding: 34px 34px 36px;
       box-shadow: var(--shadow);
     }
     .hero::after {
@@ -79,7 +79,7 @@
     .hero-grid { align-items: end; margin-top: 22px; }
     .hero-grid > * { flex: 1; }
     .eyebrow, .meta-label, .section-kicker {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -93,9 +93,9 @@
     }
     .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .hero-link, .ghost-link {
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 12px;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -112,37 +112,37 @@
     }
     h1 {
       margin: 0 0 12px;
-      font-size: clamp(34px, 5vw, 56px);
+      font-size: clamp(40px, 5vw, 58px);
       line-height: 0.98;
       letter-spacing: -0.04em;
     }
     h1 span { color: var(--tk-green-soft); }
     .hero-copy p, .section-note, .insight p, .note, .detail-text {
       line-height: 1.7;
-      font-size: 14px;
+      font-size: 17px;
     }
     .hero-copy p { margin: 0; color: rgba(255, 255, 255, 0.82); }
     .hero-summary {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 22px;
-      padding: 18px;
+      border-radius: 16px;
+      padding: 22px;
       max-width: 372px;
     }
     .hero-summary .meta-label { color: rgba(255, 255, 255, 0.64); margin-bottom: 10px; }
     .summary-value {
-      font-size: 34px;
+      font-size: 40px;
       line-height: 1;
       font-weight: 800;
       color: #dfffe8;
       margin-bottom: 8px;
       letter-spacing: -0.04em;
     }
-    .hero-summary p { margin: 0; font-size: 13px; line-height: 1.6; color: rgba(255, 255, 255, 0.76); }
+    .hero-summary p { margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, 0.82); }
     .section {
       margin-top: 24px;
       background: rgba(255, 255, 255, 0.42);
-      border-radius: 28px;
+      border-radius: 18px;
       padding: 18px 0 0;
     }
     .section-header {
@@ -152,8 +152,8 @@
       align-items: flex-start;
     }
     .section-kicker { color: var(--tk-text-muted); }
-    .section-title { margin: 6px 0 0; font-size: 28px; letter-spacing: -0.03em; }
-    .section-note { margin: 8px 0 0; max-width: 780px; color: var(--tk-text-soft); }
+    .section-title { margin: 6px 0 0; font-size: 34px; letter-spacing: -0.03em; }
+    .section-note { margin: 8px 0 0; max-width: 880px; color: var(--tk-text-soft); }
     .grid-four, .grid-three, .grid-two, .grid-seven {
       display: grid;
       gap: 18px;
@@ -166,12 +166,12 @@
     .card {
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(0, 38, 58, 0.08);
-      border-radius: 22px;
+      border-radius: 16px;
       box-shadow: var(--shadow);
       padding: 22px;
     }
     .metric-card {
-      min-height: 176px;
+      min-height: 194px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -190,22 +190,22 @@
     .metric-card.warning::before { background: linear-gradient(90deg, var(--tk-warning), #f7c56a); }
     .metric-card.soft::before { background: linear-gradient(90deg, var(--tk-navy-soft), var(--tk-green)); }
     .metric-value {
-      font-size: clamp(28px, 3vw, 40px);
+      font-size: clamp(34px, 3.2vw, 46px);
       letter-spacing: -0.04em;
       line-height: 1;
       font-weight: 800;
     }
     .metric-trend, .detail-text { color: var(--tk-text-soft); }
-    .metric-subvalue { margin-top: auto; font-size: 12px; color: var(--tk-text-muted); }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .metric-subvalue { margin-top: auto; font-size: 14px; color: var(--tk-text-muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 16px; }
     th, td {
-      padding: 12px 10px;
+      padding: 14px 10px;
       border-bottom: 1px solid rgba(0, 38, 58, 0.08);
       text-align: left;
       vertical-align: top;
     }
     th {
-      font-size: 11px;
+      font-size: 14px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--tk-text-muted);
@@ -235,11 +235,11 @@
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      font-size: 13px;
+      font-size: 16px;
       color: var(--tk-text-soft);
     }
     .bar-track {
-      height: 14px;
+      height: 16px;
       border-radius: 999px;
       background: #dfe8ee;
       overflow: hidden;
@@ -278,12 +278,12 @@
       display: grid;
       place-items: center;
       color: var(--tk-text-soft);
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 700;
       text-align: center;
       line-height: 1.4;
     }
-    .viz-caption { font-size: 13px; color: var(--tk-text-soft); line-height: 1.7; }
+    .viz-caption { font-size: 16px; color: var(--tk-text-soft); line-height: 1.7; }
     .svg-card svg { width: 100%; height: auto; display: block; }
     .detail-grid {
       display: grid;
@@ -292,19 +292,19 @@
     }
     .detail-item {
       border: 1px solid rgba(0, 38, 58, 0.08);
-      border-radius: 16px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 16px;
       background: rgba(255, 255, 255, 0.72);
     }
     .detail-item strong {
       display: block;
       margin-top: 5px;
-      font-size: 24px;
+      font-size: 28px;
       letter-spacing: -0.03em;
     }
     .insight {
       padding: 18px 18px 18px 20px;
-      border-radius: 20px;
+      border-radius: 16px;
       border: 1px solid rgba(0, 38, 58, 0.08);
       background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
       position: relative;
@@ -321,11 +321,11 @@
     }
     .insight.warning::before { background: var(--tk-warning); }
     .insight.danger::before { background: var(--tk-danger); }
-    .insight h3 { margin: 0 0 8px; font-size: 18px; letter-spacing: -0.02em; }
+    .insight h3 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.02em; }
     .insight p { margin: 0; color: var(--tk-text-soft); }
     .note {
       padding: 18px 20px;
-      border-radius: 20px;
+      border-radius: 16px;
       background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(0, 200, 90, 0.18);
       color: var(--tk-text-soft);
@@ -336,7 +336,7 @@
       padding-top: 20px;
       border-top: 1px solid rgba(0, 38, 58, 0.08);
       color: var(--tk-text-muted);
-      font-size: 12px;
+      font-size: 14px;
       flex-wrap: wrap;
       line-height: 1.6;
     }
@@ -373,12 +373,12 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <h1><span>April 2026</span> dashboard for Eagle Oak Landscape</h1>
-          <p>April is modeled as the first month where Eagle Oak's recurring maintenance base and spring project activity work together. Revenue rose to $96.4k, gross margin recovered to 48.8%, and EBITDA finished positive, but labor efficiency and collections still determine whether that improvement can hold through the summer push.</p>
+          <p>April is modeled as a good spring month. Sales improved to $96.4k, gross margin recovered to 48.8%, and operating profit was positive. The two areas to keep watching are crew productivity and how quickly invoices turn into cash.</p>
         </div>
         <aside class="hero-summary">
-          <div class="meta-label">April EBITDA</div>
+          <div class="meta-label">April operating profit</div>
           <div class="summary-value">$9.3k</div>
-          <p>Positive operating leverage returned as recurring maintenance covered base crew capacity while project work layered on higher contribution dollars.</p>
+          <p>Bottom line: April covered normal overhead and still produced a profit. That is a good sign going into the busy season.</p>
         </aside>
       </div>
     </section>
@@ -387,8 +387,8 @@
       <div class="section-header">
         <div>
           <div class="section-kicker">Executive summary</div>
-          <h2 class="section-title">A healthier spring month, with labor and A/R still under the microscope</h2>
-          <p class="section-note">These headline cards answer the owner's first questions: Is revenue growing, are crews productive, is cash safe, and is the recurring base doing its job?</p>
+          <h2 class="section-title">At a glance: April was better, but labor and collections still need attention</h2>
+          <p class="section-note">This top section answers the main owner questions first: sales, gross profit, operating profit, and cash. If you only read one section, start here.</p>
         </div>
       </div>
       <div class="grid-four">
@@ -405,10 +405,10 @@
           <div class="metric-subvalue">Direct labor + materials: $49.4k</div>
         </article>
         <article class="card metric-card">
-          <div class="meta-label">EBITDA</div>
+          <div class="meta-label">Operating profit</div>
           <div class="metric-value">$9.3k</div>
-          <div class="metric-trend">EBITDA margin of 9.7% shows the business can produce profit when route density and field productivity tighten together.</div>
-          <div class="metric-subvalue">Net income modeled at $7.1k</div>
+          <div class="metric-trend">Operating profit margin of 9.7% shows the company can make money when crews stay busy and work is priced correctly.</div>
+          <div class="metric-subvalue">Net income after interest and taxes: $7.1k</div>
         </article>
         <article class="card metric-card warning">
           <div class="meta-label">Ending cash</div>
@@ -422,9 +422,9 @@
     <section class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Revenue engine</div>
-          <h2 class="section-title">Recurring revenue is carrying the base; installs provide the margin lift</h2>
-          <p class="section-note">The modeled mix below reflects a commercial landscaping business where monthly maintenance contracts protect crew utilization while install, irrigation, and seasonal enhancement work lift average ticket size.</p>
+          <div class="section-kicker">Revenue</div>
+          <h2 class="section-title">Maintenance work keeps the base steady; project work adds upside</h2>
+          <p class="section-note">This is the revenue mix to protect. Monthly maintenance helps keep crews loaded. Install, irrigation, and add-on work improve the month when priced well.</p>
         </div>
       </div>
       <div class="grid-seven">
@@ -453,7 +453,7 @@
                 <div class="bar-track"><div class="bar-fill warn" style="width: 12%"></div></div>
               </div>
             </div>
-            <p class="viz-caption">This mix is healthy for Eagle Oak: recurring contracts keep payroll covered, while enhancement work adds enough higher-margin upside to prevent the month from becoming a pure route-density play.</p>
+          <p class="viz-caption">This is a healthy mix. The steady maintenance base helps cover payroll, while project work gives the month extra profit.</p>
           </div>
         </article>
         <article class="card svg-card">
@@ -491,7 +491,7 @@
               <text x="10" y="70">$90k</text>
             </g>
           </svg>
-          <p class="viz-caption">The modeled first four months show spring ramp-up. April clears the low revenue-per-employee concern only if the business can keep this pace without adding idle labor.</p>
+          <p class="viz-caption">The first four months show a normal spring ramp. The key is keeping this pace without letting crews sit idle.</p>
         </article>
       </div>
       <div class="grid-two">
@@ -537,28 +537,28 @@
     <section class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">Labor efficiency</div>
-          <h2 class="section-title">Field labor is still the main economic lever</h2>
-          <p class="section-note">The business model only scales if recurring routes keep crews loaded and project work is priced high enough to absorb overtime, equipment usage, and rework risk.</p>
+          <div class="section-kicker">Labor</div>
+          <h2 class="section-title">Crew productivity is still the main driver of profit</h2>
+          <p class="section-note">For this company, labor is the big lever. If crews stay busy on well-priced work, profit improves quickly. If routes are loose or jobs are underbid, profit disappears fast.</p>
         </div>
       </div>
       <div class="grid-three">
         <article class="card metric-card soft">
           <div class="meta-label">Revenue per employee</div>
           <div class="metric-value">$3.9k</div>
-          <div class="metric-trend">Annualized from April, this points to roughly $46k per employee, better than the current profile but still below stronger operators.</div>
+          <div class="metric-trend">Using April as the pace month, this points to roughly $46k per employee on an annual basis. That is better, but still below stronger operators.</div>
           <div class="metric-subvalue">Target band: $6.5k to $8.5k per employee per month</div>
         </article>
         <article class="card metric-card warning">
           <div class="meta-label">Labor % of revenue</div>
           <div class="metric-value">36.1%</div>
-          <div class="metric-trend">This is workable, but it leaves little room for route fragmentation or unbilled callback work.</div>
+          <div class="metric-trend">This is workable, but it leaves little room for wasted drive time, small low-priced stops, or callback work.</div>
           <div class="metric-subvalue">Field labor dollars: $34.8k</div>
         </article>
         <article class="card metric-card">
           <div class="meta-label">Crew utilization</div>
           <div class="metric-value">81%</div>
-          <div class="metric-trend">Better than winter, but still suggests some dead time or underpriced small stops in the schedule.</div>
+          <div class="metric-trend">Better than winter, but it still suggests some dead time in the schedule or too many small underpriced stops.</div>
           <div class="metric-subvalue">Target: 86%+</div>
         </article>
       </div>
@@ -590,7 +590,7 @@
               <text x="376" y="194">70%</text>
             </g>
           </svg>
-          <p class="viz-caption">The spread between the strongest and weakest crews is wide. That usually points to account mix, dispatching friction, or inconsistent stop pricing rather than simple headcount shortage.</p>
+          <p class="viz-caption">The gap between the best and weakest crews is too wide. That usually points to route design, stop pricing, or dispatch issues more than staffing shortage.</p>
         </article>
         <article class="card">
           <div class="meta-label">Unit economics</div>
@@ -608,7 +608,7 @@
               <strong>7.4 stops</strong>
             </div>
           </div>
-          <p class="detail-text">These modeled economics are good enough to support positive EBITDA, but they are not yet strong enough to hide sloppy route planning. In a business this labor-heavy, small scheduling leaks compound quickly.</p>
+          <p class="detail-text">These numbers are good enough to support a profitable month, but not strong enough to cover sloppy route planning. In a labor-heavy business, small scheduling problems add up quickly.</p>
           <table>
             <thead>
               <tr>
@@ -631,14 +631,14 @@
     <section class="section">
       <div class="section-header">
         <div>
-          <div class="section-kicker">True financial detail</div>
-          <h2 class="section-title">P&amp;L, cash flow, and working capital detail</h2>
-          <p class="section-note">This section is where the summary earns credibility. The model ties revenue mix, job costs, payroll pressure, and collections into one operating view.</p>
+          <div class="section-kicker">Financial detail</div>
+          <h2 class="section-title">Profit and loss, cash flow, and receivables detail</h2>
+          <p class="section-note">This section shows the real financial detail behind the summary. It ties sales, job costs, payroll pressure, and collections into one clear view.</p>
         </div>
       </div>
       <div class="grid-two">
         <article class="card">
-          <div class="meta-label">Monthly P&amp;L bridge</div>
+          <div class="meta-label">April profit and loss</div>
           <table>
             <thead>
               <tr>
@@ -654,15 +654,15 @@
               <tr><td><strong>Gross profit</strong></td><td class="text-right pos"><strong>$47.0k</strong></td><td class="text-right pos"><strong>48.8%</strong></td></tr>
               <tr><td>Operating expenses</td><td class="text-right">$34.1k</td><td class="text-right">35.4%</td></tr>
               <tr><td>Owner comp / admin overhead</td><td class="text-right">$3.6k</td><td class="text-right">3.7%</td></tr>
-              <tr><td><strong>EBITDA</strong></td><td class="text-right pos"><strong>$9.3k</strong></td><td class="text-right pos"><strong>9.7%</strong></td></tr>
+              <tr><td><strong>Operating profit</strong></td><td class="text-right pos"><strong>$9.3k</strong></td><td class="text-right pos"><strong>9.7%</strong></td></tr>
               <tr><td>Interest + taxes</td><td class="text-right">$2.2k</td><td class="text-right">2.3%</td></tr>
               <tr><td><strong>Net income</strong></td><td class="text-right pos"><strong>$7.1k</strong></td><td class="text-right pos"><strong>7.4%</strong></td></tr>
             </tbody>
           </table>
         </article>
         <article class="card svg-card">
-          <div class="meta-label">Quarter trend with labels</div>
-          <svg viewBox="0 0 520 300" role="img" aria-label="Quarterly trend for revenue and EBITDA margin">
+          <div class="meta-label">Sales and operating profit trend</div>
+          <svg viewBox="0 0 520 300" role="img" aria-label="Quarterly trend for revenue and operating profit margin">
             <line x1="52" y1="244" x2="486" y2="244" stroke="#c8d5df" stroke-width="2"></line>
             <g fill="#7A909F" font-size="12" font-family="Plus Jakarta Sans, sans-serif">
               <text x="64" y="266">Feb</text>
@@ -696,12 +696,12 @@
               <text x="446" y="178">7%</text>
             </g>
           </svg>
-          <p class="viz-caption">Revenue is climbing, but the more important story is margin quality. April's improvement is meaningful because EBITDA moved with it instead of getting consumed by overhead or labor drift.</p>
+          <p class="viz-caption">Sales are improving, but the more important point is that profit improved too. That means the extra revenue did not get eaten up by overhead or labor drift.</p>
         </article>
       </div>
       <div class="grid-two">
         <article class="card">
-          <div class="meta-label">Cash flow and runway</div>
+          <div class="meta-label">Cash flow and cash safety</div>
           <table>
             <thead>
               <tr>
@@ -720,7 +720,7 @@
           </table>
         </article>
         <article class="card">
-          <div class="meta-label">A/R aging and concentration</div>
+          <div class="meta-label">Customer receivables aging</div>
           <table>
             <thead>
               <tr>
@@ -737,12 +737,12 @@
               <tr><td><strong>Total A/R</strong></td><td class="text-right"><strong>$73.8k</strong></td><td class="text-right"><strong>100%</strong></td></tr>
             </tbody>
           </table>
-          <p class="detail-text">A/R is better than the profile's higher-risk case, but the business is still financing payroll ahead of collections. The goal is not just lower aging; it is predictable cash timing before weekly payroll clears.</p>
+          <p class="detail-text">Receivables look better than a high-risk case, but the business is still carrying payroll before all cash comes in. The goal is simple: get paid faster and more predictably.</p>
         </article>
       </div>
       <div class="grid-two">
         <article class="card">
-          <div class="meta-label">Top customer concentration</div>
+          <div class="meta-label">Largest customers</div>
           <table>
             <thead>
               <tr>
@@ -784,34 +784,34 @@
     <section class="section" id="commentary">
       <div class="section-header">
         <div>
-          <div class="section-kicker">CFO commentary</div>
-          <h2 class="section-title">What matters most coming out of April</h2>
-          <p class="section-note">The operating story is better than the company profile alone would suggest, but the next layer of improvement depends on pricing discipline, route design, and faster billing-to-cash conversion.</p>
+          <div class="section-kicker">Key commentary</div>
+          <h2 class="section-title">Main takeaways and next steps</h2>
+          <p class="section-note">The business looks healthier in April, but the next round of improvement depends on clear pricing, tighter routes, and faster collections.</p>
         </div>
       </div>
       <div class="grid-two">
         <div class="insight-list">
           <article class="insight">
-            <h3>1. Recurring maintenance is doing exactly what it should</h3>
+            <h3>1. Maintenance contracts are doing their job</h3>
             <p>At 60% of revenue, recurring work is stabilizing labor absorption and giving the business a base from which to add higher-margin projects. That reduces volatility and makes growth more controllable than a project-only model.</p>
           </article>
           <article class="insight warning">
-            <h3>2. Productivity improved, but Eagle Oak is not yet at best-in-class crew economics</h3>
+            <h3>2. Productivity improved, but there is still room to tighten the routes</h3>
             <p>April's utilization and labor percentage are respectable, yet revenue per employee still trails stronger operators. The next win is route density and minimum pricing discipline on small accounts, not broad cost-cutting.</p>
           </article>
         </div>
         <div class="insight-list">
           <article class="insight danger">
-            <h3>3. Payroll remains the real cash stress test</h3>
+            <h3>3. Payroll is still the real cash pressure point</h3>
             <p>Even in a good month, weekly payroll hits before all invoices are collected. A tighter A/R cadence, cleaner deposits on install work, and faster completion billing will do more for financial resilience than trimming office overhead.</p>
           </article>
           <article class="insight">
-            <h3>4. Pricing power is likely hiding inside account mix</h3>
-            <p>The profile suggests too many small or underpriced contracts. If management prunes low-density stops and pushes enhancement upsells through the best property managers, EBITDA can expand without adding much headcount.</p>
+            <h3>4. Some margin improvement is probably sitting inside the current customer mix</h3>
+            <p>The profile suggests too many small or underpriced contracts. If management prunes low-density stops and pushes enhancement upsells through the best property managers, operating profit can improve without adding much headcount.</p>
           </article>
         </div>
       </div>
-      <div class="note">Modeled recommendations for May: raise minimum stop pricing on low-density routes, move irrigation repairs to same-week billing, review the bottom 10 accounts by gross profit per visit, and tie crew scorecards to billable hours, callbacks, and route completion time.</div>
+      <div class="note"><strong>Simple May action plan:</strong> raise minimum pricing on low-density stops, bill irrigation repairs the same week, review the 10 weakest accounts by profit per visit, and track each crew on billable hours, callbacks, and route completion time.</div>
       <div class="footer">
         <div>Prepared as a mock TurnkeyCFO owner dashboard using the Eagle Oak Landscape profile, industry assumptions, and illustrative April 2026 financial modeling.</div>
         <div>Confidential demo reporting for presentation purposes.</div>

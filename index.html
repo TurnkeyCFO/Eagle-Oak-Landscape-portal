@@ -29,12 +29,12 @@
         radial-gradient(circle at top right, rgba(0, 200, 90, 0.12), transparent 26%),
         linear-gradient(180deg, #f8fbfd 0%, #eef4f7 100%);
     }
-    .shell { width: min(1080px, calc(100% - 28px)); margin: 20px auto 48px; }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 20px auto 48px; }
     .hero {
       background: linear-gradient(135deg, rgba(0, 38, 58, 0.98), rgba(10, 74, 106, 0.94));
       color: white;
-      border-radius: 28px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 34px;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -82,18 +82,18 @@
     .hero-stat {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 22px;
-      padding: 18px;
+      border-radius: 16px;
+      padding: 22px;
     }
     .hero-stat-label {
-      font-size: 12px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: rgba(255, 255, 255, 0.62);
       margin-bottom: 8px;
     }
     .hero-stat-value {
-      font-size: 38px;
+      font-size: 44px;
       font-weight: 800;
       letter-spacing: -0.05em;
       margin-bottom: 8px;
@@ -107,8 +107,8 @@
     .link {
       text-decoration: none;
       padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 12px;
+      border-radius: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -123,32 +123,32 @@
       margin-top: 24px;
       background: rgba(255, 255, 255, 0.58);
       border: 1px solid var(--tk-border);
-      border-radius: 24px;
-      padding: 22px;
+      border-radius: 18px;
+      padding: 26px;
       box-shadow: var(--shadow);
     }
-    .section h2 { margin: 0 0 12px; font-size: 28px; letter-spacing: -0.03em; }
-    .section p { margin: 0; color: var(--tk-text-soft); line-height: 1.7; font-size: 14px; }
+    .section h2 { margin: 0 0 12px; font-size: 32px; letter-spacing: -0.03em; }
+    .section p { margin: 0; color: var(--tk-text-soft); line-height: 1.7; font-size: 17px; }
     .portal-card {
       margin-top: 18px;
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid var(--tk-border);
-      border-radius: 22px;
-      padding: 22px;
+      border-radius: 18px;
+      padding: 24px;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 18px;
       align-items: center;
     }
     .portal-label {
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--tk-text-muted);
     }
     .portal-title {
       margin: 8px 0 10px;
-      font-size: 30px;
+      font-size: 34px;
       letter-spacing: -0.04em;
     }
     .portal-title a { color: var(--tk-text); text-decoration: none; }
@@ -160,13 +160,13 @@
     }
     .portal-metric {
       border: 1px solid var(--tk-border);
-      border-radius: 16px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 18px;
       background: #f9fcfe;
     }
     .portal-metric strong {
       display: block;
-      font-size: 24px;
+      font-size: 30px;
       margin-top: 4px;
       letter-spacing: -0.03em;
     }
@@ -175,11 +175,11 @@
     .bar-label {
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
+      font-size: 16px;
       color: var(--tk-text-soft);
     }
     .bar-track {
-      height: 12px;
+      height: 14px;
       border-radius: 999px;
       background: #dfe8ee;
       overflow: hidden;
@@ -203,33 +203,33 @@
       <div class="hero-grid">
         <div>
           <div class="eyebrow">TurnkeyCFO client portal</div>
-          <h1><span>Eagle Oak Landscape</span> financial dashboard mock</h1>
-          <p>This mock portal translates the Eagle Oak business profile into a monthly owner dashboard: executive summary first, true financial detail underneath, and operator-focused commentary at the end. All figures are modeled for presentation purposes and tuned to a commercial landscaping business in DFW.</p>
+          <h1><span>Eagle Oak Landscape</span> owner dashboard</h1>
+          <p>This version is built to be straightforward and easy to read. It starts with the main answers first, then shows the financial detail, then closes with plain-English recommendations. All figures are modeled for presentation purposes and fit a commercial landscaping company in DFW.</p>
           <div class="links">
             <a class="link link-primary" href="./april-2026-dashboard.html">Open April 2026 dashboard</a>
             <a class="link link-secondary" href="https://turnkeycfo.com/" target="_blank" rel="noreferrer">TurnkeyCFO</a>
           </div>
         </div>
         <aside class="hero-stat">
-          <div class="hero-stat-label">Modeled annual revenue</div>
+          <div class="hero-stat-label">Estimated annual revenue</div>
           <div class="hero-stat-value">$840k</div>
-          <p>Recurring maintenance is treated as the stabilizer, with seasonal installs and irrigation work driving spring and summer upside.</p>
+          <p>Maintenance contracts are treated as the steady base. Spring projects and irrigation work add upside when crews are fully loaded.</p>
         </aside>
       </div>
     </section>
 
     <section class="section">
-      <h2>Portal Snapshot</h2>
-      <p>The page below is designed to feel like a real monthly CFO review for Earl Shanks: a clean summary up top, visualized operating levers in the middle, and actionable commentary after the financial detail.</p>
+      <h2>What’s Inside</h2>
+      <p>The dashboard below is organized like an owner review: first the headline numbers, then the revenue and labor drivers, then the true financial detail, and finally the key action points.</p>
 
       <article class="portal-card">
         <div>
-          <div class="portal-label">Latest dashboard</div>
+          <div class="portal-label">Current dashboard</div>
           <div class="portal-title"><a href="./april-2026-dashboard.html">April 2026 Financial Dashboard</a></div>
-          <p>April is modeled as a healthy spring month with stronger recurring revenue, better crew absorption, and tighter cash conversion than the winter baseline.</p>
+          <p>April is modeled as a solid spring month with stronger recurring revenue, better crew productivity, and better collections than the winter months.</p>
           <div class="portal-meta">
             <div class="portal-metric">Revenue<strong>$96.4k</strong></div>
-            <div class="portal-metric">EBITDA<strong>$9.3k</strong></div>
+            <div class="portal-metric">Operating Profit<strong>$9.3k</strong></div>
             <div class="portal-metric">Ending Cash<strong>$62.1k</strong></div>
           </div>
         </div>
